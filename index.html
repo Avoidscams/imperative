@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>美妆教程</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding: 50px; }
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            font-size: 24px;
+            color: #fff;
+            background-color: #ff69b4;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin: 10px;
+        }
+        .btn:hover {
+            background-color: #ff1493;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            text-align: center;
+        }
+        .modal button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            margin: 5px;
+        }
+    </style>
+    <script>
+        function showRequestModal() {
+            document.getElementById("requestModal").style.display = "block";
+        }
+        function closeRequestModal() {
+            document.getElementById("requestModal").style.display = "none";
+            alert("恭喜你！成功躲过一次网络诈骗，相信你已经刀枪不入了。");
+            setTimeout(() => {
+                alert("不贪便宜；\n\n使用比较安全的支付工具；\n\n仔细甄别，严加防范；\n\n不要在网上购买非正当产品，如毕业证书、考题答案等；\n\n不要轻信以各种名义要求你先付款的信息，不要轻易把自己的银行卡借给他人；\n\n提高自我保护意识，注意妥善保管自己的个人信息，不向他人透露本人证件号码、账号、密码等，尽量避免在网吧等公共场所使用网上电子商务服务。");
+                setTimeout(() => {
+                    if (confirm("确定")) {
+                        alert("切~我一定不会被骗的！");
+                    }
+                }, 1000);
+            }, 1000);
+        }
+        function allowDetection() {
+            document.getElementById("requestModal").style.display = "none";
+            document.getElementById("detectionMessage").style.display = "block";
+            
+            setTimeout(() => {
+                document.getElementById("detectionMessage").innerText = "皮肤检测完成！";
+                setTimeout(() => {
+                    alert("对不起，您被采集人脸信息了。");
+                    setTimeout(() => {
+                        alert("不点击不明链接，相关隐私权限不要打开，预防网络诈骗！");
+                        setTimeout(() => {
+                            alert("还要努力沉淀啊~");
+                        }, 1000);
+                    }, 1000);
+                }, 2000);
+            }, 2000);
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>欢迎开启您的美妆之旅</h1>
+        <p>那么首先让我们先检测下您的皮肤状态，以便根据您的皮肤状态制定专门的美妆计划。</p>
+        <button class="btn" onclick="showRequestModal()">皮肤检测</button>
+    </div>
+    
+    <div id="requestModal" class="modal">
+        <p>请求打开您的摄像头、麦克风功能，以便进行皮肤检测。</p>
+        <button onclick="allowDetection()">允许</button>
+        <button onclick="closeRequestModal()">拒绝</button>
+    </div>
+    
+    <p id="detectionMessage" style="display:none; font-size: 20px; color: #ff1493; margin-top: 20px;">正在检测您的皮肤状态...</p>
+</body>
+</html>
